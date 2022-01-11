@@ -1,15 +1,18 @@
 {
-  "name": "rto-project",
+  "name": "RTO-Managment-System",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "devStart": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dhrrruvin/RTO-Managment-System.git"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -17,7 +20,11 @@
   },
   "homepage": "https://github.com/dhrrruvin/RTO-Managment-System#readme",
   "dependencies": {
+    "body-parser": "^1.19.1",
     "express": "^4.17.2",
-    "mysql": "^2.18.1"
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
