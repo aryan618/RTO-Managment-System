@@ -1,9 +1,2 @@
-<<<<<<< HEAD
 node_modules/
 .env
-=======
-.ini
-.env
-package-lock.json
-node_modules
->>>>>>> 844191834665982bce805178cfe1c8668b09c038
