@@ -10,6 +10,10 @@ var insertProperty = function(string, propName, propValue) {
     return string;
 };
 
+var onclickEvent = function(selector, callback) {
+    $(selector).on('click', callback);
+}
+
 var post = async function(url, data) {
     var response = await fetch(url, {
         method: 'POST',
@@ -22,23 +26,27 @@ var post = async function(url, data) {
     return response;
 };
 
-function insertRecord() {
-    var name = document.getElementById('name').value;
-    var address = document.getElementById('address').value;
+signUp = function() {
+    const name = $('#signup-name')[0].value,
+        email = $('#signup-email')[0].value,
+        password = $('#signup-password')[0].value,
+        phone = $('#signup-phone')[0].value;
 
-    if (name.length != 0 && address.length != 0) {
-        post('/customer/insert', {
+    if (name.length != 0 && email.length != 0 && password.length != 0 && phone.length != 0) {
+        post('/customer/signup', {
             name: name,
-            address: address
+            email: email,
+            password: password,
+            phone: phone
         });
     }
-}
+};
 
 verifyLogin = function() {
-    const customer = $("#floatingInput")[0].value;
+    const email = $("#floatingInput")[0].value;
     const password = $("#floatingPassword")[0].value;
     const rememberme = $('input:checkbox').is(':checked');
-    if (customer.length == 0) {
+    if (email.length == 0) {
         insertHtml('#login-message', 'Please enter Customer ID');
         return;
     }
@@ -47,7 +55,7 @@ verifyLogin = function() {
         return;
     }
     const res = post('/customer/verify', {
-            customer: customer,
+            email: email,
             password: password,
             rememberme: rememberme
         })
@@ -56,43 +64,38 @@ verifyLogin = function() {
         });
 };
 
-$('#loginButton').on('click', function() {
-    verifyLogin();
-});
-
-$('#login-page').on('click', function() {
-    $('#carousel').addClass('d-none');
-    $ajaxUtils.sendGetRequest(
-        '/snippets/login',
-        function(htmlData) {
-            insertHtml('#main-content', htmlData);
-        },
-        false
-    );
-});
-
 var loadSignupPage = function() {
     $('#carousel').addClass('d-none');
     $ajaxUtils.sendGetRequest(
         '/snippets/signup',
         function(htmlData) {
             insertHtml('#main-content', htmlData);
+            onclickEvent('#signup-button', signUp);
+            onclickEvent('#login-link', loadLoginPage);
         },
         false);
 };
 
-$('#signup-page').on('click', function() {
-    loadSignupPage();
-})
+var loadLoginPage = function() {
+    $('#carousel').addClass('d-none');
+    $ajaxUtils.sendGetRequest(
+        '/snippets/login',
+        function(htmlData) {
+            insertHtml('#main-content', htmlData);
+            onclickEvent('#login-button', verifyLogin);
+            onclickEvent('#signup-link', loadSignupPage);
+        },
+        false
+    );
+}
 
-$('#signup-link').on('click', function() {
-    console.log('clicking');
-    loadSignupPage();
+$('#login-page').on('click', function() {
+    loadLoginPage();
 });
 
-$('#signup-button').on('click', function() {
-
-})
+$('#signup-page').on('click', function() {
+    loadSignupPage();
+});
 
 $(window).unload(function() {
     // $ajaxUtils.sendGetRequest(
@@ -102,6 +105,17 @@ $(window).unload(function() {
     //     },
     //     false
     // );
+    // $.get('/customer/logout');
+});
 
-    $.get('/customer/logout');
+// $(function() {
+//     $("#navbar-toggler").blur(function(event) {
+//         var screenWidth = window.innerWidth;
+//         if (screenWidth < 768) {
+//             $("#navbar-content").collapse('hide');
+//         }
+//     });
+// });
+$('.dropdown').hover(function() {
+    $('.dropdown-menu', this).toggleClass('show');
 });

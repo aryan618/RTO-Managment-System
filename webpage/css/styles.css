@@ -1,6 +1,6 @@
 :root {
     --primary-accent: var(--bs-indigo);
-    --background-color: rgba(236, 90, 22, 0.966);
+    --background-color: rgb(36, 36, 54);
 }
 
 
@@ -13,6 +13,22 @@
 
 .navbar {
     background-color: var(--background-color);
+}
+
+.navbar-toggler span {
+    color: white;
+}
+
+.navbar-toggler span:hover {
+    color: var(--primary-accent);
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler:hover {
+    color: #00000000;
 }
 
 .navbar .dropdown .dropdown-menu {
@@ -35,8 +51,86 @@
 }
 
 .navbar .nav-item a:hover {
-    font-weight: 300;
     color: var(--primary-accent);
+}
+
+.dropdown .dropdown-menu {
+    transition: all 0.5s cubic-bezier(0, 0.3, 0.51, 1);
+    opacity: 0;
+    max-height: 0;
+    display: block;
+    overflow: hidden;
+}
+
+.dropdown .dropdown-menu.show {
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 1, 0.57);
+    opacity: 1;
+    max-height: 300px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+.signup {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300
+}
+
+.signup .height {
+    height: 100vh
+}
+
+.signup .card {
+    border: none;
+    padding: 20px;
+    background-color: white;
+    color: #25272a
+}
+
+.signup .circle {
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5855e7;
+    color: var(--primary-accent);
+    font-size: 10px;
+    border-radius: 50%
+}
+
+.signup .form-input {
+    position: relative;
+    margin-bottom: 10px;
+    margin-top: 10px
+}
+
+.signup .form-input i {
+    position: absolute;
+    font-size: 18px;
+    top: 15px;
+    left: 10px
+}
+
+.signup h5 {
+    font-size: 30px;
+}
+
+.signup .form-control {
+    height: 50px;
+    background-color: white;
+    text-indent: 24px;
+    font-size: 15px
+}
+
+.signup .form-control:focus {
+    background-color: white;
+    box-shadow: none;
+    color: #25272a;
+    border-color: #4f63e7
+}
+
+.signup .signup {
+    height: 50px;
+    font-size: 18px
 }
 
 @font-face {

@@ -4,24 +4,20 @@ const router = Router();
 
 var format = /[ '"?*^&!]/;
 
-router.post("/insert", async function(req, res) {
-    const { name, address } = req.body;
-    // const result = (await db.promise().query(`select cust_id from customer`))[0];
-    // const lastCustId = result[result.length - 1].cust_id;
-
+router.post("/signup", async function(req, res) {
+    const { name, email, password, phone } = req.body;
     try {
-        db.promise().query(`insert into customer (name, address) values ("${name}","${address}");`);
-        console.log('1 row inserted!');
-        console.log(name + ' ' + address);
+        db.promise().query(`insert into customer (name, email, password, phone_no) values ("${name}", "${email}", "${password}", "${phone}");`);
+        console.log('1 row inserted!\n' + JSON.stringify(req.body));
     } catch (err) {
         console.log(err);
     }
-    res.sendStatus(201);
+    res.status(201).send('New user signed up!');
 });
 
 router.post('/verify', async function(req, res) {
-    const { customer, password, rememberMe } = req.body;
-    if (format.test(customer)) {
+    const { email, password, rememberMe } = req.body;
+    if (format.test(email)) {
         res.send('Please enter valid customer ID');
         return;
     }
@@ -31,13 +27,13 @@ router.post('/verify', async function(req, res) {
         return;
     }
     try {
-        const { cust_id } = await db.promise().query(`select cust_id from customer where cust_id = ${customer};`)
+        const { cust_id } = await db.promise().query(`select cust_id from customer where email = "${email}";`)
             .then(res => res[0][0]);
         if (cust_id) {
             const pass = (await db.promise().query(`select password from customer where cust_id = ${cust_id};`))[0][0].password;
             if (password == pass) {
                 req.session.authentication = true;
-                req.session.user = customer;
+                req.session.user = cust_id;
                 req.session.cookie.expires = false;
                 res.send('Authentication successful');
             } else
