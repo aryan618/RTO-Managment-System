@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use(session({
     secret: 'some secret',
-    cookie: { maxAge: 2 * 60 * 1000 },
+    // cookie: { maxAge: 2 * 60 * 1000 },
     saveUninitialized: false,
     resave: false
 }));

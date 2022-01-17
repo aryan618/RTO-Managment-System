@@ -5,12 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="webpage/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="webpage/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="webpage/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="webpage/css/login_page.css">
+    <link rel="stylesheet" href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/dist/mdb5/standard/compiled.min.css">
+    <link rel="stylesheet" href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/dist/mdb5/plugins/all.min.css">
+    <link rel="stylesheet" id="roboto-subset.css-css" href="https://mdbcdn.b-cdn.net/wp-content/themes/mdbootstrap4/docs-app/css/mdb5/fonts/roboto-subset.css?ver=3.9.0-update.5" type="text/css" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>RTOMS</title>
 </head>
 
 <body>
+    <!-- navigation bar -->
     <nav class="navbar navbar-expand-lg first-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -53,16 +59,17 @@
                             Login / Sign Up <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="/webpage/login.html">Login</a></li>
-                            <li><a class="dropdown-item" href="#">Sign Up</a></li>
+                            <li><a class="dropdown-item" id="login-page">Login</a></li>
+                            <li><a class="dropdown-item" id="signup-page">Sign Up</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+    <!-- navigation bar code end -->
 
-    <div id="carouselExampleCaptions" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div id="carousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -101,11 +108,8 @@
         </button>
     </div>
 
-    <h1>RTO Management System Homepage</h1>
-
     <div id="main-content" class="container">
-        <button class="btn btn-primary" name="" onclick="startApp();">Start</button>
-        <button class="btn btn-primary" name="" onclick="window.open('/webpage/login.html', '_self')">Login</button>
+        <h1>RTO Management System Homepage</h1>
     </div>
 
     <script src="/webpage/js/jquery-2.1.4.min.js"></script>

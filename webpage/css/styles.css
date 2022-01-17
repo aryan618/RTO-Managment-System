@@ -1,5 +1,6 @@
 :root {
     --primary-accent: var(--bs-indigo);
+    --background-color: rgba(236, 90, 22, 0.966);
 }
 
 
@@ -11,11 +12,11 @@
 } */
 
 .navbar {
-    background-color: black;
+    background-color: var(--background-color);
 }
 
 .navbar .dropdown .dropdown-menu {
-    background-color: black;
+    background-color: var(--background-color);
     gap: 0.25rem;
     padding: 0.25rem;
     border-radius: 5px;

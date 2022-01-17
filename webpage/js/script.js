@@ -10,15 +10,6 @@ var insertProperty = function(string, propName, propValue) {
     return string;
 };
 
-var startApp = function() {
-    $ajaxUtils.sendGetRequest(
-        '/snippets/form1',
-        function(htmlData) {
-            insertHtml('#main-content', htmlData);
-        },
-        false);
-};
-
 var post = async function(url, data) {
     var response = await fetch(url, {
         method: 'POST',
@@ -68,6 +59,40 @@ verifyLogin = function() {
 $('#loginButton').on('click', function() {
     verifyLogin();
 });
+
+$('#login-page').on('click', function() {
+    $('#carousel').addClass('d-none');
+    $ajaxUtils.sendGetRequest(
+        '/snippets/login',
+        function(htmlData) {
+            insertHtml('#main-content', htmlData);
+        },
+        false
+    );
+});
+
+var loadSignupPage = function() {
+    $('#carousel').addClass('d-none');
+    $ajaxUtils.sendGetRequest(
+        '/snippets/signup',
+        function(htmlData) {
+            insertHtml('#main-content', htmlData);
+        },
+        false);
+};
+
+$('#signup-page').on('click', function() {
+    loadSignupPage();
+})
+
+$('#signup-link').on('click', function() {
+    console.log('clicking');
+    loadSignupPage();
+});
+
+$('#signup-button').on('click', function() {
+
+})
 
 $(window).unload(function() {
     // $ajaxUtils.sendGetRequest(
