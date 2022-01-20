@@ -27,6 +27,7 @@ router.post('/verify', async function(req, res) {
         return;
     }
     try {
+        console.log(email);
         const { cust_id } = await db.promise().query(`select cust_id from customer where email = "${email}";`)
             .then(res => res[0][0]);
         if (cust_id) {
@@ -41,12 +42,24 @@ router.post('/verify', async function(req, res) {
         } else
             res.status(403).send('Customer not found');
     } catch (err) {
-        res.status(403).send('Something went wrong!');
+        res.status(403).send('Customer not found');
         console.log(err);
     }
 });
 
-router.get('/logout', function(req, res) {
+router.post('/authenticated', (req, res) => {
+    var data = {
+        user: req.session.user
+    };
+
+    if (req.session.authentication)
+        data.auth = true;
+    else
+        data.auth = false
+    res.send(data);
+});
+
+router.post('/logout', function(req, res) {
     console.log('logging out');
     req.session.destroy();
     res.status(200).send('Logout successful');

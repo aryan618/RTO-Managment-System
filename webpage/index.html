@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href="webpage/css/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="webpage/css/styles.css">
     <link rel="stylesheet" type="text/css" href="webpage/css/login_page.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>RTOMS</title>
 </head>
 
@@ -26,13 +25,13 @@
             <div class="collapse navbar-collapse" id="navbar-content">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a id="home-link" class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Dropdown
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -48,20 +47,7 @@
                         <a class="nav-link disabled">Disabled</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav ml-md-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><span class="bi bi-person-circle"></span> Profile</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown">
-                            <span class="bi bi-box-arrow-right"></span> Login / Sign Up
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" id="login-page">Login</a></li>
-                            <li><a class="dropdown-item" id="signup-page">Sign Up</a></li>
-                        </ul>
-                    </li>
+                <ul id="navbar-right" class="navbar-nav mb-2 mb-lg-0 ml-md-auto">
                 </ul>
             </div>
         </div>
