@@ -1,0 +1,73 @@
+retrieve violation commited b/w given dates
+retrive of driving license name number of same blood group
+change of address, contact no
+renewal of license
+license detail
+
+
+create table customer (
+	cust_id int auto_increment, 
+	name vachar(30),
+	phone_no varchar(20),
+	dob date,
+	email varchar(30),
+	password varchar(30),
+	primary key (cust_id)
+);
+
+alter table customer auto_increment=100;
+
+create table driving_license (
+	cust_id int,
+	dl_number varchar(20),
+	name varchar(30),
+	address varchar(50),
+	dob date,
+	validity date,
+	blood_group varchar(5),
+	primary key(cust_id, dl_number),
+	foreign key (cust_id) references customer(cust_id)
+);
+
+create table vehicle (
+	cust_id int,
+	vehicle_no varchar(10),
+	name varchar(30),
+	color varchar(10),
+	class varchar(10),
+	fuel_type varchar(10),
+	primary key(vehicle_no),
+	foreign key (cust_id) references customer(cust_id)
+);
+
+create table violations (
+	complaint_id int,
+	vehicle_no varchar(10),
+	place varchar(15),
+	date date,
+	fine int,
+	offence varchar(20),
+	primary key(complaint_id),
+	foreign key(vehicle_no) references vehicle (vehicle_no)
+);
+
+create table insurance (
+    insurance_id int,
+    vehicle_no varchar(10),
+    name varchar(30),
+    insurance_period int,
+    amount int,
+    primary key (insurance_id),
+    foreign key(vehicle_no) references vehicle(vehicle_no)
+);
+
+
+select complaint_id, vehicle_no, place, date, fine, offence
+from vehicle
+join violations using(vehicle_no)
+where date between 
+
+insert into violation (complaint_id, vehicle_no, place, date, fine, offence) values (null, 'KA05AP1234', 'Bangalore', '2022-01-31', '50000', 'seat belt');
+insert into violation (complaint_id, vehicle_no, place, date, fine, offence) values (null, 'KA05AP1234', 'Bangalore', '2022-02-02', '50000', 'mask');
+
+insert into violation (complaint_id, vehicle_no, place, date, fine, offence) values (null, 'KA05AP1234', 'Bangalore', '2022-02-03', '50000', 'signal break');

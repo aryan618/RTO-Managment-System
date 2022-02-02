@@ -1,0 +1,40 @@
+<form class="mt-5 mb-5">
+    <h1 class="mt-3 text-center">Register Your Vehicle</h1>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-9">
+            <div class="card px-5 py-5">
+                <div class="col-md-10 mx-auto mb-3">
+                    <label for="dl-form-fname">Vehicle Number</label>
+                    <input type="text" class="form-control" id="vehicle-form-number" placeholder="KA00AA0000" required>
+                </div>
+                <div class="col-md-10 mx-auto mb-3">
+                    <label for="dl-form-fname">Vehicle Name</label>
+                    <input type="text" class="form-control" id="vehicle-form-name" placeholder="Nissan Sunny" required>
+                </div>
+                <div class="col-md-10 mx-auto mb-3">
+                    <label for="dl-form-lname">Color</label>
+                    <input type="text" class="form-control" id="vehicle-form-color" placeholder="White" required>
+                </div>
+                <div class="col-md-10 mx-auto mb-3">
+                    <label for="dl-form-lname">Class</label>
+                    <input type="text" class="form-control" id="vehicle-form-class" placeholder="LMV" required>
+                </div>
+                <div class="col-md-10 mx-auto mb-5">
+                    <label for="dl-form-lname">Fuel Type</label>
+                    <div class="input-group">
+                        <select id="vehicle-form-fueltype" class="form-select" required>
+                            <option selected disabled hidden>Select a fuel</option>
+                            <option value="Petrol">Petrol</option>
+                            <option value="Diesel">Diesel</option>
+                            <option value="Electrical">Electrical</option>
+                            <option value="CNG+petrol">CNG + Petrol</option>
+                            <option value="CNG+Diesel">CNG + Diesel</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="vehicle-form-submit" class="btn btn-primary col-md-5 mx-auto mb-3">Submit form</button>
+                <button id="vehicle-form-back" class="btn btn-primary col-md-5 mx-auto mb-5">Back</button>
+            </div>
+        </div>
+    </div>
+</form>
