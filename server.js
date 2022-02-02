@@ -3,6 +3,7 @@ const session = require('express-session');
 const store = new session.MemoryStore();
 const customerRoute = require('./routes/customer');
 const snippetsRoute = require('./routes/snippets');
+const dlRoute = require('./routes/dl');
 const app = express();
 const port = 3000;
 
@@ -29,5 +30,6 @@ app.post("/", function(req, res) {
 
 app.use('/customer', customerRoute);
 app.use('/snippets', snippetsRoute);
+app.use('/dl', dlRoute);
 
 app.listen(port, () => console.log("Server is running on http://localhost:" + port));

@@ -33,7 +33,7 @@ router.post('/verify', async function(req, res) {
         if (cust_id) {
             const pass = (await db.promise().query(`select password from customer where cust_id = ${cust_id};`))[0][0].password;
             if (password == pass) {
-                req.session.authentication = true;
+                req.session.auth = true;
                 req.session.user = cust_id;
                 req.session.cookie.expires = false;
                 res.send('Authentication successful');
@@ -51,11 +51,10 @@ router.post('/authenticated', (req, res) => {
     var data = {
         user: req.session.user
     };
-
-    if (req.session.authentication)
+    if (req.session.auth)
         data.auth = true;
     else
-        data.auth = false
+        data.auth = false;
     res.send(data);
 });
 

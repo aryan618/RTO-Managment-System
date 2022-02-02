@@ -85,6 +85,33 @@ verifyLogin = function() {
         });
 };
 
+registerDL = function() {
+    const dlno = $('#dl-form-dlno')[0].value,
+        fname = $('#dl-form-fname')[0].value,
+        lname = $('#dl-form-lname')[0].value,
+        dob = $('#dl-form-dob').data('datepicker').getFormattedDate('yyyy-mm-dd'),
+        address = $('#dl-form-address')[0].value,
+        validity = $('#dl-form-validity').data('datepicker').getFormattedDate('yyyy-mm-dd'),
+        bloodgrp = $('#dl-form-bloodgrp').val(),
+        bloodrh = $('#dl-form-bloodrh').val();
+
+    post('/customer/authenticated', {})
+        .then(res => JSON.parse(res))
+        .then(res => {
+            if (res.auth) {
+                post('/dl/entry', {
+                    cust_id: res.user,
+                    dlno: dlno,
+                    name: fname + ' ' + lname,
+                    dob: dob,
+                    address: address,
+                    validity: validity,
+                    blood: bloodgrp + bloodrh
+                });
+            };
+        });
+};
+
 var loadHomePage = function() {
     show('.navbar');
     show('#carousel');
@@ -148,6 +175,10 @@ loadDLRegisterPage = function() {
         '/snippets/dl_form',
         function(htmlData) {
             insertHtml('#main-content', htmlData);
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy'
+            });
+            onclickEvent('#dl-form-submit', registerDL);
         },
         false
     );
@@ -200,10 +231,10 @@ onclickEvent('#home-link', loadOptionsPage);
 
 $(function() {
     loadHomePage();
-    $("#navbar-toggler").blur(function(event) {
-        var screenWidth = window.innerWidth;
-        if (screenWidth < 768) {
-            $("#navbar-content").collapse('hide');
-        }
-    });
+    // $("#navbar-toggler").blur(function(event) {
+    //     var screenWidth = window.innerWidth;
+    //     if (screenWidth < 768) {
+    //         $("#navbar-content").collapse('hide');
+    //     }
+    // });
 });
