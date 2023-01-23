@@ -1,13 +1,9 @@
-retrieve violation commited b/w given dates
-retrive of driving license name number of same blood group
-change of address, contact no
-renewal of license
-license detail
-
+create database rtodb;
+use rtodb;
 
 create table customer (
 	cust_id int auto_increment, 
-	name vachar(30),
+	name varchar(30),
 	phone_no varchar(20),
 	dob date,
 	email varchar(30),
@@ -62,12 +58,18 @@ create table insurance (
 );
 
 
-select complaint_id, vehicle_no, place, date, fine, offence
-from vehicle
-join violations using(vehicle_no)
-where date between 
+insert into violations (complaint_id, vehicle_no, place, date, fine, offence) values (201, 'KA05AP1234', 'Bangalore', '2022-01-31', '50000', 'seat belt');
+insert into violations (complaint_id, vehicle_no, place, date, fine, offence) values (202, 'KA05AP1234', 'Bangalore', '2022-02-02', '50000', 'mask');z
+insert into violations (complaint_id, vehicle_no, place, date, fine, offence) values (203, 'KA05AP1234', 'Bangalore', '2022-02-03', '50000', 'signal break');
 
-insert into violation (complaint_id, vehicle_no, place, date, fine, offence) values (null, 'KA05AP1234', 'Bangalore', '2022-01-31', '50000', 'seat belt');
-insert into violation (complaint_id, vehicle_no, place, date, fine, offence) values (null, 'KA05AP1234', 'Bangalore', '2022-02-02', '50000', 'mask');
 
-insert into violation (complaint_id, vehicle_no, place, date, fine, offence) values (null, 'KA05AP1234', 'Bangalore', '2022-02-03', '50000', 'signal break');
+-- select complaint_id, vehicle_no, place, date, fine, offence
+-- from vehicle
+-- join violations using(vehicle_no)
+-- where date between 
+
+-- retrieve violation commited b/w given dates
+-- retrive of driving license name number of same blood group
+-- change of address, contact no
+-- renewal of license
+-- license detail
