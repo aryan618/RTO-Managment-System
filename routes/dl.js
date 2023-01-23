@@ -1,6 +1,4 @@
-const {
-    Router
-} = require('express');
+const { Router } = require('express');
 const db = require("../database");
 const router = Router();
 
@@ -23,7 +21,7 @@ router.post('/entry', (req, res) => {
     res.status(201).send('New user signed up!');
 });
 
-router.post('/retrieve', async (req, res) => {
+router.post('/retrieve', async(req, res) => {
     const {
         cust_id
     } = req.body;
@@ -31,7 +29,7 @@ router.post('/retrieve', async (req, res) => {
         db.query(`select *
                 from driving_license
                 where cust_id = ${cust_id};`,
-            function (err, result, fields) {
+            function(err, result, fields) {
                 if (err) throw err;
                 res.send(result);
             });
@@ -76,7 +74,7 @@ router.post('/addvehicle', (req, res) => {
     res.status(201).send('New Vehicle Registered!');
 });
 
-router.post('/voilationbw', async (req, res) => {
+router.post('/voilationbw', async(req, res) => {
     const {
         cust_id,
         sdate,
@@ -88,7 +86,7 @@ router.post('/voilationbw', async (req, res) => {
         from vehicle
         join violations using(vehicle_no)
         where cust_id = ${cust_id} and
-        date between '${sdate}' and '${edate}'`, function (err, result, fields) {
+        date between '${sdate}' and '${edate}'`, function(err, result, fields) {
             if (err) throw err;
             res.send(result);
         });
